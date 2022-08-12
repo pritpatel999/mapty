@@ -1,9 +1,5 @@
 'use strict';
 
-// prettier-ignore
-// console.log(test); // //we defined this variable in test.js file. we can access that variable in this file if this file is being called after test.js.
-// let map, mapEvent;
-
 class Workout {
     date = new Date();
     id = (Date.now() + '').slice(-10);
@@ -58,11 +54,6 @@ class Cycling extends Workout {
     }
 }
 
-// const run1 = new Running([23.0719488, 72.6401024], 5, 20, 77);
-// const cycling1 = new Cycling([23.0719488, 72.6401024], 10, 20, 660);
-// console.log(run1,cycling1);
-
-
 ////////////////////////////////////////
 // //application architecture
 
@@ -109,14 +100,12 @@ class App {
         const {longitude} = position.coords;
         const coords = [latitude, longitude];
         // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
-        console.log(this);
         this.#map = L.map('map').setView(coords, this.#mapZoomLevel); // // second parameter which is 13 is a zoom level of map.
         // console.log(map);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(this.#map);
 
-        console.log(this);
         this.#map.on('click', this._showForm.bind(this));
         
         // //get data from local storage and display it on page load.
